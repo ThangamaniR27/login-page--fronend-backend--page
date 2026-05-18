@@ -9,34 +9,37 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      alert("Please fill all fields");
-      return;
-    }
+  if (!email || !password) {
+    alert("Please fill all fields");
+    return;
+  }
 
-    try {
-      const res = await axios.post("http://localhost:5000/login", {
+  try {
+    const res = await axios.post(
+      "https://login-page-fronend-backend-page-6.onrender.com/login",
+      {
         email,
         password,
-      });
-
-      if (res.data.success) {
-        alert("Login Successful");
-        navigate("/dashboard");
-      } else {
-        alert("Invalid credentials");
       }
+    );
 
-    } catch (err) {
-  console.log(err);
+    if (res.data.success) {
+      alert("Login Successful");
+      navigate("/dashboard");
+    } else {
+      alert("Invalid credentials");
+    }
 
-  if (err.response) {
-    alert(err.response.data.message);
-  } else {
-    alert("Backend server not running");
+  } catch (err) {
+    console.log(err);
+
+    if (err.response) {
+      alert(err.response.data.message);
+    } else {
+      alert("Backend server not reachable");
+    }
   }
-}
-  };
+};
 
   return (
     <div className="container">
