@@ -15,13 +15,15 @@ function Login() {
   }
 
   try {
-    const res = await axios.post(
-      "https://login-page-fronend-backend-page-6.onrender.com/login",
-      {
-        email,
-        password,
-      }
-    );
+   const res = await axios.post(
+  "https://login-page-fronend-backend-page-6.onrender.com/login",
+  {
+    email,
+    password,
+  }
+);git add .
+git commit -m "connect frontend to render backend"
+git push
 
     if (res.data.success) {
       alert("Login Successful");
